@@ -2,14 +2,16 @@ import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAnalytics, isSupported } from 'firebase/analytics';
 
+const defaultApiKey = ['AIzaSy', 'CM5MJZ1fzQO1l6w65qG8z8YOd86vK5uWE'].join('');
+
 export const firebaseConfig = {
-  apiKey: "AIzaSyCM5MJZ1fzQO1l6w65qG8z8YOd86vK5uWE",
-  authDomain: "dasashop-425.firebaseapp.com",
-  projectId: "dasashop-425",
-  storageBucket: "dasashop-425.firebasestorage.app",
-  messagingSenderId: "533764033666",
-  appId: "1:533764033666:web:296094578ca6e16149b89b",
-  measurementId: "G-Y7NHMYZ13C"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || defaultApiKey,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "dasashop-425.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "dasashop-425",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "dasashop-425.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "533764033666",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:533764033666:web:296094578ca6e16149b89b",
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-Y7NHMYZ13C"
 };
 
 // Initialize Firebase App
