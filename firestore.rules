@@ -1,0 +1,31 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Products Collection: Anyone can browse products and discounts
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Orders Collection: Anyone can submit an order with name & mobile; shopkeeper reads & updates
+    match /orders/{orderId} {
+      allow create: if request.resource.data.customerName is string 
+                    && request.resource.data.customerPhone is string
+                    && request.resource.data.customerName.size() > 0
+                    && request.resource.data.customerPhone.size() >= 10;
+      allow read, update, delete: if true;
+    }
+
+    // Store Settings: Public read for contact and address details
+    match /storeSettings/{settingId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Catch-all safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

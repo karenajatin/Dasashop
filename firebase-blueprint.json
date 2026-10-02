@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "BookingOrder": {
+      "title": "BookingOrder",
+      "description": "Customer product booking order submitted from the storefront",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "customerAddress": { "type": "string" },
+        "customerNote": { "type": "string" },
+        "productId": { "type": "string" },
+        "productName": { "type": "string" },
+        "productImage": { "type": "string" },
+        "productPrice": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "discountPrice": { "type": "number" },
+        "quantity": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["customerName", "customerPhone", "productId", "totalAmount"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Store item catalog with pricing and discount information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "nameGu": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "originalPrice": { "type": "number" },
+        "discountPrice": { "type": "number" },
+        "hasDiscount": { "type": "boolean" },
+        "imageUrl": { "type": "string" },
+        "description": { "type": "string" },
+        "descriptionGu": { "type": "string" },
+        "inStock": { "type": "boolean" },
+        "unit": { "type": "string" },
+        "featured": { "type": "boolean" }
+      },
+      "required": ["name", "categoryId", "originalPrice", "imageUrl"]
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": "BookingOrder",
+      "description": "Customer product bookings placed via the website"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Products and discounts managed by the storekeeper"
+    },
+    "/storeSettings/general": {
+      "schema": "StoreProfile",
+      "description": "Store contact details and general settings"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "DukaanSmart - Shopkeeper Store & Order Management",
+  "description": "Smart showcase storefront for shopkeepers with discount highlights, category pages, customer product booking, direct WhatsApp/Email contacts, and a hidden control panel for managing products and viewing orders.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
