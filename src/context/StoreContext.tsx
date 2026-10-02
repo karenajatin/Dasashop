@@ -130,9 +130,17 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       const saved = localStorage.getItem(LOCAL_STORAGE_KEYS.PROFILE);
       if (saved) {
         const parsed = JSON.parse(saved);
+        const name = (!parsed.name || parsed.name === 'Shree Krishna Super Store') 
+          ? DEFAULT_STORE_PROFILE.name 
+          : parsed.name;
+        const nameGu = (!parsed.nameGu || parsed.nameGu === 'શ્રી કૃષ્ણા સુપર સ્ટોર') 
+          ? DEFAULT_STORE_PROFILE.nameGu 
+          : parsed.nameGu;
         return {
           ...DEFAULT_STORE_PROFILE,
           ...parsed,
+          name,
+          nameGu,
           adminPassword1: parsed.adminPassword1 && parsed.adminPassword1 !== '1234' ? parsed.adminPassword1 : '7862',
           adminPassword2: parsed.adminPassword2 && parsed.adminPassword2 !== '9999' ? parsed.adminPassword2 : '0908',
           phoneNumber: '7862090894',
